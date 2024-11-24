@@ -1,3 +1,3 @@
 import characterData from "./characters.js";
-import skillData from "./skills.js";
+import classData from "./classes.js";
 
