@@ -1,5 +1,5 @@
-import characterData from "./characters.js";
-import classData from "./classes.js";
+import characters from "./characters.js";
+import skills from "./classes.js";
 window.onload = () => {
   const availableCharactersDiv = document.getElementById('availableCharacters');
   const selectedCharactersDiv = document.getElementById('selectedCharacters');
