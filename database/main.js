@@ -1,2 +1,2 @@
-import characters from './characters.js';
-import skills from './skills.js';
+import characterData from './characters.js';
+import skillData from './skills.js';
