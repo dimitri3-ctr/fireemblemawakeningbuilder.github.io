@@ -3,7 +3,7 @@ import skillData from './skills.js';
 
 const characters = characterData.name;
 const availableClasses = characterData.available_classes;
-const availableSkills = skillData
+const availableSkills = skillData.class_skills;
     // Populate character options
 const characterOptions = document.querySelectorAll('.character-option');
 characterOptions.forEach(option => {
