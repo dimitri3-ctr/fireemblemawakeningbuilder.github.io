@@ -1,22 +1,14 @@
 import characterData from './characters.js';
 import skillData from './skills.js';
 
-const character = characterData
-function getCharacterName( character ) {
-    return character.name;
-}
-function getCharacterClass( character ) {
-    return character.available_classes;
-}
-const characters = getCharacterName(characterData);
-const availableSkills = skillData;
-const availableClasses = getCharacterClass(characterData);
-
+const characters = characterData.name;
+const availableClasses = characterData.available_classes;
+const availableSkills = skillData
     // Populate character options
 const characterOptions = document.querySelectorAll('.character-option');
 characterOptions.forEach(option => {
     option.addEventListener('click', () => {
-        const charName = option.dataset.name;
+        const charName = option.characterData.name;
         const selectedChar = characters.find(char => char.name === charName);
         if (selectedChar) {
                 addToTeam(selectedChar);
@@ -36,7 +28,7 @@ characterOptions.forEach(option => {
 
         // Create a new team member element
         const member = document.createElement('div');
-        member.dataset.name = character.name;
+        member.characterData.name = character.name;
         member.innerHTML = `<strong>${character.name}</strong> - ${character.class}`;
 
         // Create dropdown for class selection
