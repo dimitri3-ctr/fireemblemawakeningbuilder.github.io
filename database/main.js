@@ -61,22 +61,21 @@ function addToTeam(char) {
 
   // 5 skill dropdowns
   for (let i = 0; i < 5; i++) {
-    const skillSelect = document.createElement("select");
-    skillSelect.style.display = "block";
-    skillSelect.style.marginBottom = "5px";
-    skillSelect.style.width = "100%";
+  const skillSelect = document.createElement("select");
+  skillSelect.style.display = "block";
+  skillSelect.style.marginBottom = "5px";
+  skillSelect.style.width = "100%";
 
-    // Populate with all skills available to the unit
-    char.available_skills.forEach(skill => {
-      const option = document.createElement("option");
-      option.value = skill;
-      option.textContent = skill;
-      skillSelect.appendChild(option);
-    });
+  // Use only the skills from the unit
+  char.available_skills.forEach(skill => {
+    const option = document.createElement("option");
+    option.value = skill;
+    option.textContent = skill;
+    skillSelect.appendChild(option);
+  });
 
-    teamDiv.appendChild(skillSelect);
-  }
-
+  teamDiv.appendChild(skillSelect);
+}
   // Append the completed card to the team container
   teamContainer.appendChild(teamDiv);
 }
