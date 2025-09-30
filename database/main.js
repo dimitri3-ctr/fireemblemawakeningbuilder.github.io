@@ -1,4 +1,4 @@
-import characterData from "./characters.js";
+import characters from "./characters.js";
 import skillData from "./skills.js";
 const lordSkills = skillData.class_skills["lord"];
 const greatlordSkills = skillData.class_skills["great lord"];
