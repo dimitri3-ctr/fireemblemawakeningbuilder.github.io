@@ -10,7 +10,7 @@ Object.values(characters).forEach(char => {
   charDiv.style.textAlign = "center";
 //Adds character images
   const img = document.createElement("img");
-  img.src = 
+  img.src = "images/" + char.name.toLowerCase().replace(" ", "_") + ".png";
   img.alt = char.name;
   img.width = 100;
   img.style.cursor = "pointer";
