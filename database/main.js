@@ -82,6 +82,7 @@ function addToTeam(char) {
 const debugDiv = document.getElementById("debug-output");
 
 // Example: print avatarM's available skills
-debugDiv.textContent = characters.avatarM.available_skills.join(", ");
+debugDiv.textContent = "First skill of avatarM: " + characters.avatarM.available_skills[0];
+
 
                                   
