@@ -79,10 +79,7 @@ function addToTeam(char) {
   // Append the completed card to the team container
   teamContainer.appendChild(teamDiv);
 }
-const debugDiv = document.getElementById("debug-output");
 
-// Example: print avatarM's available skills
-debugDiv.textContent = "First skill of avatarM: " + characters.avatarM.available_skills[0];
 
 
                                   
