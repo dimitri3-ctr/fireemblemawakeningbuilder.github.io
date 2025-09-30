@@ -5,5 +5,6 @@ const greatlordSkills = class_skills["great lord"];
 const tacticianSkills = class_skills["tactician"];
 const grandmasterSkills = class_skills["grandmaster"];
 const avatarMClasses = characters.avatarM.available_classes;
-
+const outputDiv = document.getElementById("output");
+outputDiv.textContent = characters.chrom.name;
   
