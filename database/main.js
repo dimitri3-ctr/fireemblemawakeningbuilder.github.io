@@ -36,13 +36,24 @@ function addToTeam(char) {
 
   const teamDiv = document.createElement("div");
   teamDiv.id = `team-${char.base_id}`;
-  teamDiv.style.marginBottom = "15px";
+  teamDiv.style.marginBottom = "20px";
+  teamDiv.style.border = "1px solid #ccc";
+  teamDiv.style.padding = "10px";
+  teamDiv.style.borderRadius = "8px";
+  teamDiv.style.display = "inline-block";
+  teamDiv.style.verticalAlign = "top";
+  teamDiv.style.textAlign = "center";
+  teamDiv.style.width = "200px";
 
+  // Character name
   const name = document.createElement("div");
   name.textContent = char.name;
+  name.style.fontWeight = "bold";
+  name.style.marginBottom = "5px";
 
   // Class dropdown
   const classSelect = document.createElement("select");
+  classSelect.style.marginBottom = "10px";
   char.available_classes.forEach(cls => {
     const option = document.createElement("option");
     option.value = cls;
@@ -50,26 +61,32 @@ function addToTeam(char) {
     classSelect.appendChild(option);
   });
 
-  // Skills dropdown (updates when class changes)
-  const skillSelect = document.createElement("select");
+  // Skill dropdowns (5 selects)
+  const skillSelects = [];
+  for (let i = 0; i < 5; i++) {
+    const skillSelect = document.createElement("select");
+    skillSelect.style.marginBottom = "5px";
+    skillSelect.style.width = "100%";
 
-  function updateSkills() {
-    skillSelect.innerHTML = ""; // clear previous options
-    const skills = class_skills[classSelect.value] || [];
-    skills.forEach(skill => {
-      const option = document.createElement("option");
-      option.value = skill;
-      option.textContent = skill;
-      skillSelect.appendChild(option);
+    // Populate with all skills from class_skills
+    Object.values(class_skills).forEach(skillsArray => {
+      skillsArray.forEach(skill => {
+        if (![...skillSelect.options].some(opt => opt.value === skill)) {
+          const option = document.createElement("option");
+          option.value = skill;
+          option.textContent = skill;
+          skillSelect.appendChild(option);
+        }
+      });
     });
-  }
 
-  classSelect.addEventListener("change", updateSkills);
-  updateSkills(); // initialize skills for default class
+    teamDiv.appendChild(skillSelect);
+    skillSelects.push(skillSelect);
+  }
 
   teamDiv.appendChild(name);
   teamDiv.appendChild(classSelect);
-  teamDiv.appendChild(skillSelect);
   teamContainer.appendChild(teamDiv);
 }
+
                                   
