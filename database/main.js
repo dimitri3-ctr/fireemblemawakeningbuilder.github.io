@@ -1,9 +1,4 @@
 import characters from "./characters.js";
-import class_skills from "./skills.js";
-const lordSkills = class_skills["lord"];
-const greatlordSkills = class_skills["great lord"];
-const tacticianSkills = class_skills["tactician"];
-const grandmasterSkills = class_skills["grandmaster"];
 const avatarMClasses = characters.avatarM.available_classes;
 const charactersContainer = document.getElementById("characters-container");
 const teamContainer = document.getElementById("team-container");
@@ -31,7 +26,7 @@ Object.values(characters).forEach(char => {
 });
 //Function to add character to the team container
 function addToTeam(char) {
-  // Prevent duplicate additions
+  // Prevent adding the same character twice
   if (document.getElementById(`team-${char.base_id}`)) return;
 
   const teamDiv = document.createElement("div");
@@ -50,42 +45,39 @@ function addToTeam(char) {
   name.textContent = char.name;
   name.style.fontWeight = "bold";
   name.style.marginBottom = "5px";
+  teamDiv.appendChild(name);
 
   // Class dropdown
   const classSelect = document.createElement("select");
   classSelect.style.marginBottom = "10px";
+  classSelect.style.width = "100%";
   char.available_classes.forEach(cls => {
     const option = document.createElement("option");
     option.value = cls;
     option.textContent = cls;
     classSelect.appendChild(option);
   });
+  teamDiv.appendChild(classSelect);
 
-  // Skill dropdowns (5 selects)
-  const skillSelects = [];
+  // 5 skill dropdowns
   for (let i = 0; i < 5; i++) {
     const skillSelect = document.createElement("select");
+    skillSelect.style.display = "block";
     skillSelect.style.marginBottom = "5px";
     skillSelect.style.width = "100%";
 
-    // Populate with all skills from class_skills
-    Object.values(class_skills).forEach(skillsArray => {
-      skillsArray.forEach(skill => {
-        if (![...skillSelect.options].some(opt => opt.value === skill)) {
-          const option = document.createElement("option");
-          option.value = skill;
-          option.textContent = skill;
-          skillSelect.appendChild(option);
-        }
-      });
+    // Populate with all skills available to the unit
+    char.available_skills.forEach(skill => {
+      const option = document.createElement("option");
+      option.value = skill;
+      option.textContent = skill;
+      skillSelect.appendChild(option);
     });
 
     teamDiv.appendChild(skillSelect);
-    skillSelects.push(skillSelect);
   }
 
-  teamDiv.appendChild(name);
-  teamDiv.appendChild(classSelect);
+  // Append the completed card to the team container
   teamContainer.appendChild(teamDiv);
 }
 
