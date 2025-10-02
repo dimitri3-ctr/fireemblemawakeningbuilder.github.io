@@ -1,5 +1,4 @@
 import characters from "./characters.js";
-const avatarMClasses = characters.avatarM.available_classes;
 const charactersContainer = document.getElementById("characters-container");
 const teamContainer = document.getElementById("team-container");
 //Shows selectable characters
